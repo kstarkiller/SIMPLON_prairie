@@ -14,9 +14,8 @@ git config --global user.email "votre.email@example.com"
 ssh-keygen -t ed25519 -C "votre.email@example.com"
 
 > ### 4. Ajouter la cle ssh à Github
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-
+Ajouter la clé à cette adresse : https://github.com/settings/keys
+Donner un nom cohérent à la clé (ex: "PC_PRO")
 
 > ### 5.Tester la connection:
 ssh -T git@github.com
