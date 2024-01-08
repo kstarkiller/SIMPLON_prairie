@@ -20,6 +20,10 @@ Donner un nom cohérent à la clé (ex: "PC_PRO")
 ### 5.Tester la connection:
 ssh -T git@github.com
 
+> ## Cloner un repo Github sur sa machine
+git clone "lien SSH du repo"
+(ex: git clone git@github.com:kstarkiller/SIMPLON_prairie.git)
+
 > ## Push des changements
 ### 1. Tracker les changements
 git add "nom du fichier/dossier"
