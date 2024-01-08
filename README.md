@@ -1,7 +1,7 @@
 # Début de l'aventure SIMPLON
 Ici se trouvent tous les briefs des premières semaines de ma formation SIMPLON.
 
-## Configuration de GitHub sur WSL Ubuntu
+> ## Configuration de GitHub sur WSL Ubuntu
 ### 1. Installer Git
 sudo apt update
 sudo apt install git
