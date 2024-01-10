@@ -109,7 +109,7 @@ async def avg_sq2_price(buildingType: str, year: Union[str, None] = None):
     return result_validation(result)
 
 # REQUETE 5
-# Fonction requêtant le nombre de bien avec un nombre de pièce donné
+# Fonction requêtant le nombre de bien contenant le nombre de pièce donné
 # avec la possibilité de filtrer par année
 @app.get("/nb_rooms_count/", description="Retourne le nombre de bien avec un nombre de pièce donné")
 async def n_rooms_count(nb_room: str, year: Union[str, None] = None):
@@ -147,7 +147,7 @@ async def n_rooms_distrib(year: Union[str, None] = None):
     return result_validation(result)
 
 # REQUETE 7
-# Fonction requêtant la moyenne du prix au m² par type de batiment
+# Fonction requêtant la moyenne du prix au m² par type de bâtiment
 # avec la possibilité de filtrer par année
 @app.get("/avg_sq2_price_by_building/", description="Retourne la moyenne du prix au m² par type de batiment")
 async def avg_sq2_price_by_building(buildingType: Union[str, None] = None, year: Union[str, None] = None):
@@ -191,8 +191,7 @@ async def transactions_count_by_district(year: Union[str, None] = None):
 
 # REQUETE 9
 # Fonction requêtant le nombre de transaction sur une année donnée dans toutes les villes
-# ou le revenu fiscal de l'année n-4 est supérieur à un revenu fiscal donné
-# avec la possibilité de filtrer par année
+# où le revenu fiscal de l'année n-4 est supérieur à un revenu fiscal donné
 @app.get("/transactions_count_under_income/", description="""Retourne le nombre de transaction d'une année par ville où le revenu
          fiscal de l'année n-4 est supérieur à un revenu fiscal donné""")
 async def transactions_count_under_income(fiscalIncome2YearsAgo: str, year: str):
