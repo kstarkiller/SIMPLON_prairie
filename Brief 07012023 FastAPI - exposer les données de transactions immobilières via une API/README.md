@@ -14,8 +14,8 @@ J'ai utilisé :
 ### Prérequis
 Installation de FastAPI, Uvicorn et sqlite3 sur mon environnment Conda local.
 
-### Remarque
-Si vous téléchargez le dépot, vous y trouverez la base de donnée Chinook.db afin de faciliter la revue de mon code (première connexion).  
+### Remarques
+1. Si vous téléchargez le dépot, vous y trouverez la base de donnée Chinook.db afin de faciliter la revue de mon code (première connexion).
 Depuis ma machine, jutilise la deuxième connexion, c'est pourquoi je l'ai laissé dans mon code :
 ```py
 # Connexion vers la db à utiliser pour faciliter la correction du brief
@@ -23,4 +23,5 @@ con = sqlite3.connect("Chinook.db")
 
 # Connexion vers la db à utiliser pour exploiter l'API depuis ma machine
 #con = sqlite3.connect(r"C:\Users\Utilisateur\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db")
-```
+```  
+2. Optionnel : les retours de mon API ne sont pas au format json.

@@ -11,21 +11,26 @@ con = sqlite3.connect("Chinook.db")
 # Connexion vers la db à utiliser pour exploiter l'API deuis ma machine
 # con = sqlite3.connect(r"C:\Users\Utilisateur\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db")
 
+# GESTION DES ERREURS ET DES NULLS
+# Permet de vérifier le format de l'année
 def validate_year(year: str):
     if not year.isdigit() or not (len(year) == 4) :
-        raise HTTPException(status_code=400, detail="L'année doit être une valeur numérique de 4 chiffres")
+        raise HTTPException(status_code=400, detail="Année saisie incorrecte: Merci de saisir une valeur numérique de 4 chiffres")
     return year
 
+# Permet de vérifier le format du nombre de pièce
 def validate_room(room: str):
     if not room.isdigit() :
-        raise HTTPException(status_code=400, detail="Le nombre de pièce doit être un entier")
+        raise HTTPException(status_code=400, detail="Nombre de pièce saisi incorrect: Merci de saisir un entier inférieur à 10.")
     return room
 
+# Permet de vérifier le format du revenu fiscal
 def validate_fiscalIncome(fiscalIncome: str):
     if not fiscalIncome.isdigit() or not len(fiscalIncome) >= 5 :
-        raise HTTPException(status_code=400, detail="Merci de saisir un revenu à 6 chiffres")
+        raise HTTPException(status_code=400, detail="Revenu fiscal saisie incorrect: Merci de saisir une valeur numérique de 6 chiffres")
     return fiscalIncome
 
+# Permet de renvoyer une erreur lorsque la réponse de la requète est vide
 def result_validation(result) :
     if result is None or len(result) == 0 or result[0] == 0 or result[0] is None:
         raise HTTPException(status_code=400, detail=f"Aucune valeur pour cette entrée")
