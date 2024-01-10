@@ -24,5 +24,5 @@ con = sqlite3.connect("Chinook.db")
 # Connexion vers la db à utiliser pour exploiter l'API depuis ma machine
 #con = sqlite3.connect(r"C:\Users\Utilisateur\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db")
 ```  
-2. == Rendu optionnel== : ~~Utilisation du format json pour les retours de votre API~~
+2. ==Rendu optionnel== : ~~Utilisation du format json pour les retours de votre API~~  
 Les retours de mon API **ne sont pas** au format json.
