@@ -5,11 +5,11 @@ import uvicorn
 
 app = FastAPI()
 
-# Connexion vers la db à utiliser pour exploiter l'API deuis ma machine
-# con = sqlite3.connect(r"C:\Users\Utilisateur\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db")
-
 # Connexion vers la db à utiliser pour faciliter la correction du brief
 con = sqlite3.connect("Chinook.db")
+
+# Connexion vers la db à utiliser pour exploiter l'API deuis ma machine
+# con = sqlite3.connect(r"C:\Users\Utilisateur\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db")
 
 def validate_year(year: str):
     if not year.isdigit() or not (len(year) == 4) :
