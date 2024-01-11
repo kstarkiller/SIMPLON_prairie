@@ -8,6 +8,10 @@ app = FastAPI()
 
 con = get_db_connection(r"C:\Users\Utilisateur\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db")
 
+class buildingTypeChoices(Enum):
+    MAISON = 'Maison'
+    APPARTEMENT = 'Appartement'
+
 
 # REQUETE 1
 # Fonction requêtant le revenu fiscal moyen en 2021
@@ -80,7 +84,7 @@ async def avg_sq2_price(buildingType: str, year: Union[str, None] = None):
 
 # REQUETE 5
 # Fonction requêtant le nombre de bien contenant le nombre de pièce donné
-# avec la possibilité de filtrer par année
+# avec la possibilité de filtrer par année.
 @app.get("/nb_rooms_count/", description="Retourne le nombre de bien avec un nombre de pièce donné")
 async def n_rooms_count(nb_room: str, year: Union[str, None] = None):
     cur = con.cursor()
@@ -97,7 +101,7 @@ async def n_rooms_count(nb_room: str, year: Union[str, None] = None):
 
 # REQUETE 6
 # Fonction requêtant la répartition du nombre de bien par nombre de pièce
-# avec la possibilité de filtrer par année
+# avec la possibilité de filtrer par année.
 @app.get("/nb_rooms_distrib/", description="Retourne la répartition du nombre de bien par nombre de pièce")
 async def n_rooms_distrib(year: Union[str, None] = None):
     cur = con.cursor()
@@ -117,17 +121,17 @@ async def n_rooms_distrib(year: Union[str, None] = None):
 # Fonction requêtant la moyenne du prix au m² par type de bâtiment
 # avec la possibilité de filtrer par année
 @app.get("/avg_sq2_price_by_building/", description="Retourne la moyenne du prix au m² par type de batiment")
-async def avg_sq2_price_by_building(buildingType: Union[str, None] = None, year: Union[str, None] = None):
+async def avg_sq2_price_by_building(buildingType: buildingTypeChoices, year: Union[str, None] = None):
     cur = con.cursor()
     if buildingType and not year :
         result = cur.execute(f'''SELECT AVG(ROUND(prix/surface_habitable)) as prix_m2 FROM transactions_sample
-        WHERE type_batiment = \'{buildingType}\' GROUP BY type_batiment''').fetchone()
+        WHERE type_batiment = \'{buildingType.value}\' GROUP BY type_batiment''').fetchone()
     elif not buildingType and year :
         result = cur.execute(f'''SELECT AVG(ROUND(prix/surface_habitable)) as prix_m2, type_batiment FROM transactions_sample
         WHERE date_transaction like '{year}%' GROUP BY type_batiment''').fetchall()
     elif buildingType and year :
         result = cur.execute(f'''SELECT AVG(ROUND(prix/surface_habitable)) as prix_m2 FROM transactions_sample
-        WHERE type_batiment = \'{buildingType}\' AND date_transaction like '{year}%'
+        WHERE type_batiment = \'{buildingType.value}\' AND date_transaction like '{year}%'
         GROUP BY type_batiment''').fetchone()
     else :
         result = cur.execute(f'''SELECT AVG(ROUND(prix/surface_habitable)) as prix_m2, type_batiment FROM transactions_sample
