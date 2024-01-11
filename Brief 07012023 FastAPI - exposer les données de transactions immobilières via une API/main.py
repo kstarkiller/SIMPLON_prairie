@@ -18,4 +18,4 @@ app.get("/top10_dynamic_cities/")(f.top10_dynamic_cities)
 app.get("/cheapest_flats_sq2_price_top10_cities/")(f.cheapest_flats_sq2_price_top10_cities)
 app.get("/highest_houses_sq2_price_top10_cities/")(f.highest_houses_sq2_price_top10_cities)
 
-#uvicorn.run(app)
+uvicorn.run(app)
