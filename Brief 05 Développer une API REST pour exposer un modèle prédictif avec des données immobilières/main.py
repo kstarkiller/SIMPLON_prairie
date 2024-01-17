@@ -1,29 +1,32 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 import pickle
 import uvicorn
 import numpy as np
 
 app = FastAPI()
 
-with open(r"C:\Users\Utilisateur\local_SIMPLON\SIMPLON_prairie\Brief 12012024 Développer une API REST pour exposer un modèle prédictif avec des données immobilières\model\coordinatesOnly_model.pkl", "rb") as f:
+# LOADS DES MODELES 
+with open(r"C:\Users\Utilisateur\local_SIMPLON\SIMPLON_prairie\Brief 12012024 Développer une API REST pour exposer un modèle prédictif avec des données immobilières\model\paris_model.pkl", "rb") as f:
     my_unpickler = pickle.Unpickler(f)
-    coordinatesOnly_model = my_unpickler.load()
+    paris_model = my_unpickler.load()
 
-with open(r"C:\Users\Utilisateur\local_SIMPLON\SIMPLON_prairie\Brief 12012024 Développer une API REST pour exposer un modèle prédictif avec des données immobilières\model\withInterestRates_model.pkl", "rb") as g:
+with open(r"C:\Users\Utilisateur\local_SIMPLON\SIMPLON_prairie\Brief 12012024 Développer une API REST pour exposer un modèle prédictif avec des données immobilières\model\idf_model.pkl", "rb") as g:
     my_unpickler = pickle.Unpickler(g)
-    withInterestRates_model = my_unpickler.load()
+    idf_model = my_unpickler.load()
 
-@app.post("/sq2_price_predictor_v1/", description="Retourne une prédiction de prix au m²")
-async def sq2_price_predictor(longitude: float, latitude: float):
+
+# DECLARATIONS DES ROUTES POST
+@app.post("/sq2_price_predictor_PARIS/", description="Retourne une prédiction de prix au m²")
+async def sq2_price_predictor_PARIS(longitude: str, latitude: str):
     input_data = np.array([[longitude, latitude]])
 
-    return coordinatesOnly_model.predict(input_data)[0]
+    return paris_model.predict(input_data)[0]
 
-@app.post("/sq2_price_predictor_v2/", description="Retourne une prédiction de prix au m²")
-async def sq2_price_predictor(longitude: float, latitude: float, taux: float):
+@app.post("/sq2_price_predictor_IDF/", description="Retourne une prédiction de prix au m²")
+async def sq2_price_predictor_IDF(longitude: str, latitude: str, taux: str):
     input_data = np.array([[longitude, latitude, taux]])
-
-    return withInterestRates_model.predict(input_data)[0]
+    
+    return idf_model.predict(input_data)[0]
 
 
 uvicorn.run(app)
