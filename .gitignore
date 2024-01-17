@@ -1,8 +1,9 @@
 # Ignorer tous les fichiers .log
 *.log
 
-# Ignorer le fichier transactions.csv du Brief 05 (car >1.5Go)
-"Brief 05 Développer une API REST pour exposer un modèle prédictif avec des données immobilières\dataSources\transactions.csv"
+# Ignorer le fichier transactions.csv du Brief 05 (car >1.6Go)
+"Brief 05 Développer une API REST pour exposer un modèle prédictif avec des données immobilières"\dataSources\*.csv
+
 
 
 
