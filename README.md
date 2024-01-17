@@ -1,8 +1,7 @@
 # Vivez avec moi mon aventure à **`L’ECOLE IA MICROSOFT BY SIMPLON`**
 Ici se trouvent tous les briefs de ma formation SIMPLON.
-**`Ici se trouvent tous les briefs de ma formation SIMPLON.`**
 
-[![Page de la formation](Page de la formation)](https://simplon.co/formation/ecole-ia-microsoft/23)
+Pour plus d'information sur la formation: [cliquez ici !](https://simplon.co/formation/ecole-ia-microsoft/23)
 
 > ## Configuration de GitHub sur Linux
 ### 1. Installer Git
